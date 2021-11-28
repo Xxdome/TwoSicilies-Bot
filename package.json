@@ -1,0 +1,17 @@
+{
+  "name": "bot-luxgang",
+  "version": "1.0.0",
+  "description": "TwoSicilies bot Created By XxDome_",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "XxDome_",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.8.2",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.24.0",
+    "discord.js": "^12.5.3"
+  }
+}
