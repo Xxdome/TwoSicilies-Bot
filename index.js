@@ -106,7 +106,7 @@ client.on("message", (message) => {
             .setFooter("TwoSicilies Bot", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Coat_of_arms_of_the_Kingdom_of_the_Two_Sicilies.svg/776px-Coat_of_arms_of_the_Kingdom_of_the_Two_Sicilies.svg.png")
 
             message.channel.send(ManutenzioneEmbed).then(message => {
-                message.delete({ timeout: 100})
+                message.delete({ timeout: 1000})
             })
         }
     }
