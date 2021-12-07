@@ -95,17 +95,19 @@ client.on("message", (message) => {
 
     if(message.member.roles.cache.has("906947995734511668")){
         if(message.content.startsWith(`${prefix}Manutenzione`) || message.content.startsWith(`${prefix}manutenzione`)){
-            
+
             var ManutenzioneEmbed = new Discord.MessageEmbed()
             .setTitle("MANUTENZIONE/MAINTENANCE")
             .setTimestamp()
-            .setThumbnail("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinclipart.com%2Fpindetail%2Fmihb_clipart-wrench-and-hammer-clipart-png-download%2F&psig=AOvVaw2LHPgUvqVg_DcOVbhgkwk9&ust=1639004864879000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCKjE75nn0vQCFQAAAAAdAAAAABAE")
-            .addField(":flag_it: | ***ATTENZIONE***", "Il bot **è andato in manutenzione** e per tanto **non potrà rispondere** ai vari comandi", true)
-            .addField(":england: | ***Attention***", "The bot **is currently in maintence** and therefore **he can't respond** to various commands", true)
+            .setThumbnail("https://www.pinclipart.com/picdir/middle/1-13908_clipart-wrench-and-hammer-clipart-png-download.png")
+            .addField(":flag_it: | **ATTENZIONE**", "Il bot **è andato in manutenzione** e per tanto **non potrà rispondere** ai vari comandi", true)
+            .addField(":england: | **Attention**", "The bot **is currently in maintence** and therefore **he can't respond** to various commands", true)
             .setAuthor("TwoSicilies Bot", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Coat_of_arms_of_the_Kingdom_of_the_Two_Sicilies.svg/776px-Coat_of_arms_of_the_Kingdom_of_the_Two_Sicilies.svg.png")
             .setFooter("TwoSicilies Bot", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Coat_of_arms_of_the_Kingdom_of_the_Two_Sicilies.svg/776px-Coat_of_arms_of_the_Kingdom_of_the_Two_Sicilies.svg.png")
 
-            message.channel.send(ManutenzioneEmbed)
+            message.channel.send(ManutenzioneEmbed).then(message => {
+                message.delete({ timeout: 100})
+            })
         }
     }
 
