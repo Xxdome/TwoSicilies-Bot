@@ -33,6 +33,27 @@ client.on("guildMemberAdd", member => {
     ✨ **Have fun in ours Discord Server!**`)
 })
 
+//Annuncio da modificare ogni volta !Annuncio
+client.on("message", (message) => {      //NON CAMBIARE NIENTE
+    if(message.content.startsWith(`${prefix}Annuncio`) || message.content.startsWith(`${prefix}annuncio`)){
+        if(!message.member.permissions.has("ADMINISTRATOR")){
+            message.channel.send(`No permission for execute this command.`).then(msg => {
+                message.delete({ timeout: 1000 })
+                msg.delete({ timeout: 3000 })
+            })
+            return;
+        } 
+
+        if(message.member.permissions.has("ADMINISTRATOR")){   //NON CAMBIARE NIENTE APPARTE IL MESSAGGIO
+            message.channel.send(`**ANNUNCIO // ANNOUNCEMENT**
+:flag_it: | La fazione TwoSicilies **è stata bannata per inattività**, per tanto, essa **uscirà definitivamente dall'Unione europea** *(EU)*
+:england: | The TwoSicilies Faction **has been banned for inactivity**, therefore, it **will leave the European Union permanently** *(EU)*`).then(msg => {
+    msg.react("😭")
+})
+        }
+    }
+})
+
 //Comando !help
 client.on("message", (message) => {
     if(message.content.startsWith(`${prefix}help`) || message.content.startsWith(`${prefix}Help`)){
