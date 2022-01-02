@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const  client = new Discord.Client();
+const  client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] });
 
 //Prefisso per TUTTI i comandi
 const prefix = "!";
@@ -51,6 +51,13 @@ client.on("message", (message) => {      //NON CAMBIARE NIENTE
     msg.react("😭")
 })
         }
+    }
+
+    if(message.content.startsWith(`${prefix}ruoli`)){
+        var embedscegliruoli = new Discord.MessageEmbed()
+            .setTitle("**Alert Roles**")
+            .setDescription(":flag_it: Clicca sulle seguenti reazioni, e in base ad essi, ti arriverà una notifica ogni volta che ci sarà un annuncio.   :england: Click on the following reactions, and based on them, you will be notified every time there is an announcement")
+            .addField("✨ **| Annunci, Announcements**", ":flag_it:", false)
     }
 })
 
