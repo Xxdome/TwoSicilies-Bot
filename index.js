@@ -55,11 +55,23 @@ client.on("message", (message) => {      //NON CAMBIARE NIENTE
 
     if(message.content.startsWith(`${prefix}ruoli`)){
         var embedscegliruoli = new Discord.MessageEmbed()
-            .setTitle("**Alert Roles**")
-            .setDescription(":flag_it: Clicca sulle seguenti reazioni, e in base ad essi, ti arriverà una notifica ogni volta che ci sarà un annuncio.   :england: Click on the following reactions, and based on them, you will be notified every time there is an announcement")
-            .addField("✨ **| Annunci, Announcements**", ":flag_it:", false)
-        
-        message.channel.send(embedscegliruoli)
+        .setTitle("**Alert Roles**")
+        .setColor("#FF0000")
+        .setDescription(":flag_it: Clicca sulle seguenti reazioni, e in base ad essi, ti arriverà una notifica ogni volta che ci sarà un annuncio.   :england: Click on the following reactions, and based on them, you will be notified every time there is an announcement.")
+        .addField("✨ **| Annunci, Announcements**", ":flag_it: Clicca sulla reazione **per ricevere una notifica** ogni qualvolta uscirà un annuncio.", ":england: Click on the reaction **to be notified** whenever an announcement is released.", true)
+        .addField("🌍 **| Eventi, Events**", ":flag_it: Clicca sulla reazione **per ricevere una notifica** ogni qualvolta ci sarà un evento.", ":england: Click on the reaction **to be notified** whenever an event is released.", true)
+        .addField("🧰 **| Changelogs**", ":flag_it: Clicca sulla reazione **per ricevere una notifica** ogni qualvolta ci sarà un changelog.", ":england: Click on the reaction **to be notified** whenever an changelog is released.", true)
+        .addField("🔱 **| Promozioni, Promotions**", ":flag_it: Clicca sulla reazione **per ricevere una notifica** ogni qualvolta ci sarà una promozione.", ":england: Click on the reaction **to be notified** whenever an promotion is released.", true)
+        .setFooter("TwoSicilies Bot", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Coat_of_arms_of_the_Kingdom_of_the_Two_Sicilies.svg/776px-Coat_of_arms_of_the_Kingdom_of_the_Two_Sicilies.svg.png")
+        .setAuthor("TwoSicilies Bot", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Coat_of_arms_of_the_Kingdom_of_the_Two_Sicilies.svg/776px-Coat_of_arms_of_the_Kingdom_of_the_Two_Sicilies.svg.png")
+        .setTimestamp()
+
+        message.channel.send(embedscegliruoli).then(msg => {
+            msg.react("✨");
+            msg.react("🌍");
+            msg.react("🧰");
+            msg.react("🔱");
+        })
     }
 })
 
