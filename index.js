@@ -31,9 +31,22 @@ client.on("guildMemberAdd", member => {
     💯 You are the **${member.guild.memberCount}° member** of TwoSicilies Server!
     🧮 For know **all commands** of this bot **do !help**
     ✨ **Have fun in ours Discord Server!**`)
+
+    //Member Count
+
+    //Quando una persona entra nel server
+    var canale = client.channels.cache.get("927508214973620284")
+    canale.setName("🤸│Utenti: **" + member.guild.memberCount + "**")
+
+    //Quando una persona esce dal server
+    client.on("guildMemberRemove", member => { 
+    var canale = client.channels.cache.get("927508214973620284r")
+        canale.setName("🤸│Utenti: **" + member.guild.memberCount + "**")
+    });
 })
 
 //Annuncio da modificare ogni volta !Annuncio
+
 client.on("message", (message) => {      //NON CAMBIARE NIENTE
     if(message.content.startsWith(`${prefix}Annuncio`) || message.content.startsWith(`${prefix}annuncio`)){
         if(!message.member.permissions.has("ADMINISTRATOR")){
@@ -44,14 +57,16 @@ client.on("message", (message) => {      //NON CAMBIARE NIENTE
             return;
         } 
 
-        if(message.member.permissions.has("ADMINISTRATOR")){   //NON CAMBIARE NIENTE APPARTE IL MESSAGGIO
+    if(message.member.permissions.has("ADMINISTRATOR")){   //NON CAMBIARE NIENTE APPARTE IL MESSAGGIO
             message.channel.send(`**ANNUNCIO // ANNOUNCEMENT**
 :flag_it: | La fazione TwoSicilies **è stata bannata per inattività**, per tanto, essa **uscirà definitivamente dall'Unione europea** *(EU)*
-:england: | The TwoSicilies Faction **has been banned for inactivity**, therefore, it **will leave the European Union permanently** *(EU)*`).then(msg => {
+:england: | The TwoSicilies Faction **has been banned for inactivity**, therefore, it **will leave the European Union permanently** *(EU)*
+${"@927498618569633804"}`).then(msg => {
     msg.react("😭")
+    message.delete({ timeout: 1000 })
 })
-        }
     }
+}
 
     if(message.content.startsWith(`${prefix}ruoli`)){
         var embedscegliruoli = new Discord.MessageEmbed()
@@ -75,6 +90,53 @@ client.on("message", (message) => {      //NON CAMBIARE NIENTE
     }
 })
 
+//Quando una persona clicca sulla reazione riceve il ruolo...
+
+client.on("messageReactionAdd", async function (messageReaction, user) {
+    if(user.bot) return
+
+    if (messageReaction.message.partial) await messageReaction.message.fetch();
+
+    if(messageReaction.message.id == "927497597126574121") {
+        var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+        if(messageReaction._emoji.name == "✨") {
+            utente.roles.add("927498618569633804")
+        }
+        if(messageReaction._emoji.name == "🌍") {
+            utente.roles.add("927499039824547900")
+        }
+        if(messageReaction._emoji.name == "🧰") {
+            utente.roles.add("927498798106820659")
+        }
+        if(messageReaction._emoji.name == "🔱") {
+            utente.roles.add("927498787549745243")
+        }
+    } 
+})
+
+//...Se invece riclicca sulla reazione lo toglie
+
+client.on("messageReactionRemove", async function (messageReaction, user) {
+    if(user.bot) return
+
+    if (messageReaction.message.partial) await messageReaction.message.fetch();
+
+    if(messageReaction.message.id == "927497597126574121") {
+        var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+        if(messageReaction._emoji.name == "✨") {
+            utente.roles.remove("927498618569633804")
+        }
+        if(messageReaction._emoji.name == "🌍") {
+            utente.roles.remove("927499039824547900")
+        }
+        if(messageReaction._emoji.name == "🧰") {
+            utente.roles.remove("927498798106820659")
+        }
+        if(messageReaction._emoji.name == "🔱") {
+            utente.roles.remove("927498787549745243")
+        }
+    } 
+})
 //Comando !help
 client.on("message", (message) => {
     if(message.content.startsWith(`${prefix}help`) || message.content.startsWith(`${prefix}Help`)){
