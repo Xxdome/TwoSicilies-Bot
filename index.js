@@ -36,12 +36,11 @@ client.on("guildMemberAdd", member => {
 
     //Quando una persona entra nel server
     var canale = client.channels.cache.get("927508214973620284")
-    canale.setName("🤸│Utenti: **" + member.guild.memberCount + "**")
-
+    canale.setName("🤸│Utenti: " + member.guild.memberCount)
     //Quando una persona esce dal server
     client.on("guildMemberRemove", member => { 
     var canale = client.channels.cache.get("927508214973620284r")
-        canale.setName("🤸│Utenti: **" + member.guild.memberCount + "**")
+        canale.setName("🤸│Utenti: " + member.guild.memberCount)
     });
 })
 
@@ -61,7 +60,7 @@ client.on("message", (message) => {      //NON CAMBIARE NIENTE
             message.channel.send(`**ANNUNCIO // ANNOUNCEMENT**
 :flag_it: | La fazione TwoSicilies **è stata bannata per inattività**, per tanto, essa **uscirà definitivamente dall'Unione europea** *(EU)*
 :england: | The TwoSicilies Faction **has been banned for inactivity**, therefore, it **will leave the European Union permanently** *(EU)*
-${"@927498618569633804"}`).then(msg => {
+${927498618569633804}`).then(msg => {
     msg.react("😭")
     message.delete({ timeout: 1000 })
 })
